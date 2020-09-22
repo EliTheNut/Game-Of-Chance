@@ -1,2 +1,184 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;700&display=swap");
+:root {
+  --blueTheme: #3fc3e0;
+  --lightBlueTheme: #8febff;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+#startScreen {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--blueTheme);
+  font-family: "Oswald", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 5;
+}
+#gameTitle {
+  color: white;
+  margin: 0;
+  font-size: 10vw;
+  height: 10vw;
+  font-weight: 700;
+}
+#gameSubtitle {
+  color: var(--lightBlueTheme);
+  margin-top: 3vw;
+  font-size: 1.5vw;
+  font-weight: 400;
+  height: 2vw;
+  margin-bottom: 2vw;
+}
+#startForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Oswald";
+}
+#gamemodeLabel {
+  font-size: 1.25vw;
+  color: white;
+}
+#gamemode {
+  width: 10vw;
+  background-color: transparent;
+  border: solid var(--lightBlueTheme) 0.15vw;
+  color: var(--lightBlueTheme);
+  padding: 0.5vw;
+  margin: 0.25vw;
+  outline: none;
+}
+#startBtn {
+  letter-spacing: 0.25vw;
+  font-weight: 700;
+  width: 20vw;
+  height: 5vw;
+  background-color: transparent;
+  border: solid white 0.25vw;
+  color: white;
+  font-size: 2vw;
+  margin-top: 2vw;
+  transition: background-color 0.5s, color 0.5s;
+  outline: none;
+}
+#startBtn:hover {
+  background-color: white;
+  color: var(--blueTheme);
+}
 
-/*  Put your CSS Here */
+#gameBoard {
+  position: absolute;
+  background-color: var(--lightBlueTheme);
+  height: 100vh;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+}
+
+#opponent {
+  transform: translateY(-10vw);
+  background-color: var(--blueTheme);
+  height: 30vh;
+  position: absolute;
+  display: flex;
+  align-self: flex-start;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 70vw;
+}
+#player {
+  position: absolute;
+  display: flex;
+  bottom: 5vw;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: var(--blueTheme);
+  align-self: flex-end;
+  height: 45vh;
+  width: 70vw;
+}
+.card {
+  align-self: center;
+  box-shadow: 0px 4px 25px -5px rgba(0, 0, 0, 0.75);
+  border-radius: 1vw;
+  width: 20vw;
+  height: 20vw;
+  background-color: white;
+  transition: transform 0.25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#player > .card:hover {
+  transform: scale(1.25);
+}
+
+.cardDesign {
+  position: absolute;
+  width: 17vw;
+  height: 17vw;
+  border-radius: 50%;
+  border: 0.5vw solid var(--blueTheme);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#opponent > .card {
+  transform-style: preserve-3d;
+}
+#opponent > .card > .cardBack {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: white;
+  backface-visibility: hidden;
+  border-radius: 1vw;
+}
+#opponent > .card > .cardFront {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  background-color: white;
+  border-radius: 1vw;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#opponent > .card > .cardFront > .cardDesign {
+  backface-visibility: hidden;
+}
+.cardDesign > img {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+}
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Oswald";
+  font-weight: 700;
+  position: absolute;
+  align-self: center;
+  justify-self: center;
+  width: initial;
+  height: 0;
+  text-align: center;
+  font-size: 2.5vw;
+  color: var(--blueTheme);
+  margin-bottom: 10vw;
+  z-index: 10;
+  opacity: 0;
+  box-shadow: 0 0 2vw 2vw white;
+  border-radius: 70%;
+}

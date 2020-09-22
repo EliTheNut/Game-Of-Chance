@@ -20,6 +20,26 @@
   </head>
 
   <body>
-    <!-- Your html here -->
+    <div id="startScreen">
+      <h1 id="gameTitle">RoPaSi</h1>
+      <h3 id="gameSubtitle">Rock, Paper, Scissors</h3>
+      <form id="startForm">
+        <label id="gamemodeLabel" for="gamemode">Gamemode</label>
+        <select id="gamemode" name="gamemode">
+          <option>Classic - Singleplayer</option>
+          <option>Classic - Local Multiplayer</option>
+          <option>Cards - Singleplayer</option>
+          <option>Cards - Local Multiplayer</option>
+        </select>
+        <input id="startBtn" name="submit" type="submit" value="Start" />
+      </form>
+    </div>
+    <div id="gameBoard">
+      <div id="opponent"></div>
+      <div id="player"></div>
+    </div>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="optimization.js"></script>
+  <script src="script.js"></script>
 </html>
