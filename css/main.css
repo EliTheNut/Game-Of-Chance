@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;700&display=swap");
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 :root {
   --blueTheme: #3fc3e0;
   --lightBlueTheme: #8febff;
@@ -116,6 +124,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 3;
 }
 #player > .card:hover {
   transform: scale(1.25);
@@ -181,4 +190,68 @@ body {
   opacity: 0;
   box-shadow: 0 0 2vw 2vw white;
   border-radius: 70%;
+}
+#score {
+  font-size: 1.25vw;
+  font-family: "Oswald";
+  font-weight: 300;
+  position: absolute;
+  width: 20vw;
+  bottom: 1.25vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--blueTheme);
+  z-index: 2;
+}
+.scorebox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5vw;
+  height: 1.5vw;
+  color: var(--blueTheme);
+  background-color: white;
+}
+
+#restartBtn {
+  position: absolute;
+  right: 3.5vw;
+  top: 1vw;
+  width: 9vw;
+  height: 3.5vw;
+  align-self: flex-start;
+  justify-self: flex-end;
+  background-color: transparent;
+  color: var(--blueTheme);
+  border: solid var(--blueTheme) 0.25vw;
+  font-size: 1.25vw;
+  font-family: "Oswald";
+  font-weight: 700;
+  outline: none;
+  transition: 0.25s;
+}
+#restartBtn:hover {
+  background-color: var(--blueTheme);
+  color: white;
+}
+.screenWipe {
+  position: absolute;
+  z-index: 100;
+  bottom: -100vh;
+  background-color: var(--blueTheme);
+  width: 100vw;
+  height: 110vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  width: 15vw;
+  height: 15vw;
+  border-radius: 50%;
+  border: solid var(--lightBlueTheme) 1vw;
+  border-top: solid 1vw white;
+  animation: spin 1s linear infinite;
 }

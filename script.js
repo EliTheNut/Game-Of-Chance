@@ -2,13 +2,16 @@ get("startForm").addEventListener("submit", function () {
   let type = get("gamemode").value;
   if (type === "Classic - Singleplayer") {
     classicSingle();
+    anime({
+      targets: "#startScreen",
+      translateY: "-100vh",
+      duration: 1500,
+      easing: "easeInElastic(1, 1)",
+    });
+  } else {
+    alert("This Gamemode is Currently Under Construction");
   }
-  anime({
-    targets: "#startScreen",
-    translateY: "-100vh",
-    duration: 1500,
-    easing: "easeInElastic(1, 1)",
-  });
+
   event.preventDefault();
 });
 
@@ -129,6 +132,14 @@ function winPhase() {
   text.classList += "text";
   text.innerHTML = "- " + messages[num] + " -";
   animeMessage(text);
+  let pscore = parseInt(get("playerScore").innerHTML);
+  get("playerScore").innerHTML = pscore + 1;
+  setTimeout(() => {
+    text.parentNode.removeChild(text);
+  }, 2000);
+  if (pscore === 100) {
+    restart();
+  }
 }
 function tiePhase() {
   const messages = ["Is This Possible", "No wayyy", "Tied Up", "Tie"];
@@ -137,21 +148,32 @@ function tiePhase() {
   text.classList += "text";
   text.innerHTML = "- " + messages[num] + " -";
   animeMessage(text);
+  setTimeout(() => {
+    text.parentNode.removeChild(text);
+  }, 2000);
 }
 function losePhase() {
   const messages = [
     "Yikes!",
     "Defeat!",
     "Try Again",
-    "Do better",
+    "Do Better",
     "Git Gud",
-    "Stink-o",
+    "C'mon Man",
   ];
   let num = Math.floor(Math.random() * messages.length);
   let text = element("h1", get("gameBoard"));
   text.classList += "text";
   text.innerHTML = "- " + messages[num] + " -";
   animeMessage(text);
+  let oscore = parseInt(get("opponentScore").innerHTML);
+  get("opponentScore").innerHTML = oscore + 1;
+  setTimeout(() => {
+    text.parentNode.removeChild(text);
+  }, 2000);
+  if (oscore === 100) {
+    restart();
+  }
 }
 
 function resetCards() {
@@ -186,3 +208,37 @@ function animeMessage(elem) {
     resetCards();
   }, 1750);
 }
+
+function restart() {
+  document.getElementById("playerScore").innerHTML = "0";
+  document.getElementById("opponentScore").innerHTML = "0";
+  let screenWipe = element("div", get("body", 0, "tag"));
+  let loader = element("div", screenWipe);
+  loader.classList += "loader";
+  screenWipe.classList += "screenWipe";
+  let wipe = anime.timeline({
+    targets: screenWipe,
+    duration: 750,
+  });
+  wipe
+    .add({
+      translateY: "-100vh",
+    })
+    .add(
+      {
+        translateY: "-210vh",
+      },
+      1500
+    );
+  setTimeout(() => {
+    screenWipe.parentNode.removeChild(screenWipe);
+  }, 1750);
+}
+
+setTimeout(() => {
+  let playerName = document.getElementById("playerName").innerHTML;
+  let response = prompt("Enter A Username:");
+  if (response != "") {
+    playerName = response;
+  }
+}, 100);

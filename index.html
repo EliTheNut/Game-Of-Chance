@@ -21,7 +21,7 @@
 
   <body>
     <div id="startScreen">
-      <h1 id="gameTitle">RoPaSi</h1>
+      <h1 id="gameTitle">Ro-Sham-Bo</h1>
       <h3 id="gameSubtitle">Rock, Paper, Scissors</h3>
       <form id="startForm">
         <label id="gamemodeLabel" for="gamemode">Gamemode</label>
@@ -36,7 +36,16 @@
     </div>
     <div id="gameBoard">
       <div id="opponent"></div>
+
       <div id="player"></div>
+      <div id="score">
+        <p id="playerName" class="name">Player</p>
+        <div id="playerScore" class="scorebox">0</div>
+        X
+        <div id="opponentScore" class="scorebox">0</div>
+        <p id="opponentName" class="name">Computer</p>
+      </div>
+      <button id="restartBtn" onClick="restart()">Restart</button>
     </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
