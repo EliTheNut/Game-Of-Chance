@@ -36,7 +36,7 @@ function classicSingle() {
     }
     let cardImg = element("img", design);
     card.setAttribute("Card", type);
-    cardImg.src = "/css/" + type + ".png";
+    cardImg.src = "./css/" + type + ".png";
   }
   /* define player cards */
   for (let i = 0; i < 3; i++) {
@@ -58,7 +58,7 @@ function classicSingle() {
     }
     let cardImg = element("img", design);
     card.setAttribute("Card", type);
-    cardImg.src = "/css/" + type + ".png";
+    cardImg.src = "./css/" + type + ".png";
   }
 }
 
